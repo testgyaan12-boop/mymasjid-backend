@@ -1,0 +1,1868 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.1)
+
+2026-07-28T20:19:20.646+05:30  INFO 41476 --- [noor-backend] [           main] com.noormasjid.NoorBackendApplication    : Starting NoorBackendApplication v1.0.0 using Java 18.0.2.1 with PID 41476 (D:\khanfile\noor-backend\target\noor-backend-1.0.0.jar started by FT-0006 in D:\khanfile)
+2026-07-28T20:19:20.655+05:30 DEBUG 41476 --- [noor-backend] [           main] com.noormasjid.NoorBackendApplication    : Running with Spring Boot v3.4.1, Spring v6.2.1
+2026-07-28T20:19:20.660+05:30  INFO 41476 --- [noor-backend] [           main] com.noormasjid.NoorBackendApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-07-28T20:19:24.444+05:30  INFO 41476 --- [noor-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-28T20:19:24.811+05:30  INFO 41476 --- [noor-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 337 ms. Found 30 JPA repository interfaces.
+2026-07-28T20:19:27.658+05:30  INFO 41476 --- [noor-backend] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-07-28T20:19:27.698+05:30  INFO 41476 --- [noor-backend] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-07-28T20:19:27.700+05:30  INFO 41476 --- [noor-backend] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2026-07-28T20:19:27.806+05:30  INFO 41476 --- [noor-backend] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-07-28T20:19:27.811+05:30  INFO 41476 --- [noor-backend] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6987 ms
+2026-07-28T20:19:29.569+05:30  INFO 41476 --- [noor-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-07-28T20:19:31.004+05:30  INFO 41476 --- [noor-backend] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@21516c88
+2026-07-28T20:19:31.008+05:30  INFO 41476 --- [noor-backend] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-07-28T20:19:31.111+05:30  INFO 41476 --- [noor-backend] [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://aws-1-ap-south-1.pooler.supabase.com:5432/postgres (PostgreSQL 17.6)
+2026-07-28T20:19:31.560+05:30  INFO 41476 --- [noor-backend] [           main] o.f.core.internal.command.DbValidate     : Successfully validated 3 migrations (execution time 00:00.236s)
+2026-07-28T20:19:31.663+05:30  INFO 41476 --- [noor-backend] [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 3
+2026-07-28T20:19:31.681+05:30  INFO 41476 --- [noor-backend] [           main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2026-07-28T20:19:32.318+05:30  INFO 41476 --- [noor-backend] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-07-28T20:19:32.634+05:30  INFO 41476 --- [noor-backend] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.4.Final
+2026-07-28T20:19:32.761+05:30  INFO 41476 --- [noor-backend] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-07-28T20:19:33.411+05:30  INFO 41476 --- [noor-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-28T20:19:33.563+05:30  WARN 41476 --- [noor-backend] [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-07-28T20:19:33.611+05:30  INFO 41476 --- [noor-backend] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.6
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-28T20:19:37.428+05:30  INFO 41476 --- [noor-backend] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-28T20:19:37.712+05:30  INFO 41476 --- [noor-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-28T20:19:38.552+05:30 DEBUG 41476 --- [noor-backend] [           main] com.noormasjid.security.JwtAuthFilter    : Filter 'jwtAuthFilter' configured for use
+2026-07-28T20:19:38.771+05:30  INFO 41476 --- [noor-backend] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-28T20:19:41.266+05:30  INFO 41476 --- [noor-backend] [           main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-07-28T20:19:41.268+05:30  WARN 41476 --- [noor-backend] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-07-28T20:19:42.602+05:30  WARN 41476 --- [noor-backend] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-28T20:19:44.937+05:30  INFO 41476 --- [noor-backend] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-07-28T20:19:44.975+05:30  INFO 41476 --- [noor-backend] [           main] com.noormasjid.NoorBackendApplication    : Started NoorBackendApplication in 25.566 seconds (process running for 27.709)
+2026-07-28T20:23:13.004+05:30  INFO 41476 --- [noor-backend] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-28T20:23:13.005+05:30  INFO 41476 --- [noor-backend] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-07-28T20:23:13.010+05:30  INFO 41476 --- [noor-backend] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2026-07-28T20:27:34.113+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        j1_0.id,
+        j1_0.active,
+        j1_0.created_at,
+        j1_0.created_by,
+        j1_0.event_date,
+        j1_0.is_active,
+        j1_0.is_deleted,
+        j1_0.location,
+        j1_0.masjid_id,
+        j1_0.remarks,
+        j1_0.time,
+        j1_0.title,
+        j1_0.updated_at,
+        j1_0.updated_by 
+    from
+        janazahs j1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=j1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and j1_0.is_deleted=? 
+    order by
+        j1_0.created_at desc
+2026-07-28T20:27:34.113+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        pt1_0.id,
+        pt1_0.azaan_time,
+        pt1_0.created_at,
+        pt1_0.created_by,
+        pt1_0.hour,
+        pt1_0.icon,
+        pt1_0.is_active,
+        pt1_0.is_deleted,
+        pt1_0.masjid_id,
+        pt1_0.minute,
+        pt1_0.prayer_name,
+        pt1_0.prayer_time,
+        pt1_0.remarks,
+        pt1_0.sort_order,
+        pt1_0.updated_at,
+        pt1_0.updated_by 
+    from
+        prayer_times pt1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=pt1_0.masjid_id 
+    where
+        m1_0.id=? 
+    order by
+        pt1_0.sort_order
+2026-07-28T20:27:34.113+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        rc1_0.id,
+        rc1_0.created_at,
+        rc1_0.created_by,
+        rc1_0.fitra_rate,
+        rc1_0.iftar_message,
+        rc1_0.is_active,
+        rc1_0.is_deleted,
+        rc1_0.masjid_id,
+        rc1_0.note,
+        rc1_0.remarks,
+        rc1_0.taraweeh,
+        rc1_0.updated_at,
+        rc1_0.updated_by 
+    from
+        ramadan_config rc1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=rc1_0.masjid_id 
+    where
+        m1_0.id=?
+2026-07-28T20:27:34.113+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        ha1_0.id,
+        ha1_0.active,
+        ha1_0.created_at,
+        ha1_0.created_by,
+        ha1_0.description,
+        ha1_0.image,
+        ha1_0.is_active,
+        ha1_0.is_deleted,
+        ha1_0.masjid_id,
+        ha1_0.remarks,
+        ha1_0.status,
+        ha1_0.title,
+        ha1_0.updated_at,
+        ha1_0.updated_by 
+    from
+        home_announcements ha1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=ha1_0.masjid_id 
+    where
+        m1_0.id=?
+2026-07-28T20:27:34.113+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        b1_0.id,
+        b1_0.created_at,
+        b1_0.created_by,
+        b1_0.is_active,
+        b1_0.is_deleted,
+        b1_0.logo,
+        b1_0.masjid_id,
+        b1_0.masjid_name,
+        b1_0.primary_color,
+        b1_0.remarks,
+        b1_0.secondary_color,
+        b1_0.updated_at,
+        b1_0.updated_by 
+    from
+        branding b1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=b1_0.masjid_id 
+    where
+        m1_0.id=?
+2026-07-28T20:27:34.113+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        jc1_0.id,
+        jc1_0.azaan_time,
+        jc1_0.created_at,
+        jc1_0.created_by,
+        jc1_0.is_active,
+        jc1_0.is_deleted,
+        jc1_0.masjid_id,
+        jc1_0.prayer_time,
+        jc1_0.remarks,
+        jc1_0.updated_at,
+        jc1_0.updated_by 
+    from
+        jumuah_config jc1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=jc1_0.masjid_id 
+    where
+        m1_0.id=?
+2026-07-28T20:27:34.355+05:30 DEBUG 41476 --- [noor-backend] [io-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        md1_0.id,
+        md1_0.amount,
+        md1_0.created_at,
+        md1_0.created_by,
+        md1_0.is_active,
+        md1_0.is_deleted,
+        md1_0.masjid_id,
+        md1_0.month,
+        md1_0.remarks,
+        md1_0.status,
+        md1_0.updated_at,
+        md1_0.updated_by 
+    from
+        monthly_donations md1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=md1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and md1_0.is_deleted=?
+2026-07-28T20:27:34.369+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        g1_0.id,
+        g1_0.active,
+        g1_0.contact,
+        g1_0.created_at,
+        g1_0.created_by,
+        g1_0.details,
+        g1_0.found,
+        g1_0.image,
+        g1_0.is_active,
+        g1_0.is_deleted,
+        g1_0.masjid_id,
+        g1_0.remarks,
+        g1_0.title,
+        g1_0.updated_at,
+        g1_0.updated_by 
+    from
+        gumshudas g1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=g1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and g1_0.is_deleted=? 
+    order by
+        g1_0.created_at desc
+2026-07-28T20:27:34.384+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        as1_0.id,
+        as1_0.created_at,
+        as1_0.created_by,
+        as1_0.description,
+        as1_0.icon,
+        as1_0.is_active,
+        as1_0.is_deleted,
+        as1_0.masjid_id,
+        as1_0.remarks,
+        as1_0.title,
+        as1_0.updated_at,
+        as1_0.updated_by 
+    from
+        about_services as1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=as1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and as1_0.is_deleted=?
+2026-07-28T20:27:34.398+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        ga1_0.id,
+        ga1_0.active,
+        ga1_0.created_at,
+        ga1_0.created_by,
+        ga1_0.description,
+        ga1_0.icon,
+        ga1_0.is_active,
+        ga1_0.is_deleted,
+        ga1_0.masjid_id,
+        ga1_0.remarks,
+        ga1_0.title,
+        ga1_0.updated_at,
+        ga1_0.updated_by 
+    from
+        general_announcements ga1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=ga1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and ga1_0.is_deleted=? 
+    order by
+        ga1_0.created_at desc
+2026-07-28T20:27:34.401+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        dc1_0.id,
+        dc1_0.badge,
+        dc1_0.created_at,
+        dc1_0.created_by,
+        dc1_0.description,
+        dc1_0.is_active,
+        dc1_0.is_deleted,
+        dc1_0.masjid_id,
+        dc1_0.qr_image,
+        dc1_0.remarks,
+        dc1_0.title,
+        dc1_0.updated_at,
+        dc1_0.updated_by,
+        dc1_0.upi 
+    from
+        donation_causes dc1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=dc1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and dc1_0.is_deleted=?
+2026-07-28T20:27:34.401+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        e1_0.id,
+        e1_0.created_at,
+        e1_0.created_by,
+        e1_0.is_active,
+        e1_0.is_deleted,
+        e1_0.label,
+        e1_0.masjid_id,
+        e1_0.remarks,
+        e1_0.updated_at,
+        e1_0.updated_by,
+        e1_0.value 
+    from
+        expenses e1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=e1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and e1_0.is_deleted=?
+2026-07-28T20:27:34.412+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        tm1_0.id,
+        tm1_0.created_at,
+        tm1_0.created_by,
+        tm1_0.email,
+        tm1_0.image,
+        tm1_0.is_active,
+        tm1_0.is_deleted,
+        tm1_0.masjid_id,
+        tm1_0.mobile,
+        tm1_0.name,
+        tm1_0.remarks,
+        tm1_0.responsibilities,
+        tm1_0.role,
+        tm1_0.updated_at,
+        tm1_0.updated_by 
+    from
+        team_members tm1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=tm1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and tm1_0.is_deleted=?
+2026-07-28T20:27:34.413+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.arabic,
+        s1_0.category,
+        s1_0.created_at,
+        s1_0.created_by,
+        s1_0.is_active,
+        s1_0.is_deleted,
+        s1_0.masjid_id,
+        s1_0.meaning,
+        s1_0.remarks,
+        s1_0.title,
+        s1_0.transliteration,
+        s1_0.updated_at,
+        s1_0.updated_by 
+    from
+        sunnahs s1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=s1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and s1_0.is_deleted=?
+2026-07-28T20:28:00.076+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        m1_0.id,
+        m1_0.address,
+        m1_0.city,
+        m1_0.country,
+        m1_0.created_at,
+        m1_0.created_by,
+        m1_0.email,
+        m1_0.is_active,
+        m1_0.is_deleted,
+        m1_0.logo,
+        m1_0.name,
+        m1_0.phone,
+        m1_0.pincode,
+        m1_0.remarks,
+        m1_0.state,
+        m1_0.updated_at,
+        m1_0.updated_by,
+        m1_0.website 
+    from
+        masjids m1_0 
+    where
+        m1_0.id=?
+2026-07-28T20:28:00.179+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-5] org.hibernate.SQL                        : 
+    insert 
+    into
+        gumshudas
+        (active, contact, created_at, created_by, details, found, image, is_active, is_deleted, masjid_id, remarks, title, updated_at, updated_by) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-07-28T20:28:00.573+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        b1_0.id,
+        b1_0.created_at,
+        b1_0.created_by,
+        b1_0.is_active,
+        b1_0.is_deleted,
+        b1_0.logo,
+        b1_0.masjid_id,
+        b1_0.masjid_name,
+        b1_0.primary_color,
+        b1_0.remarks,
+        b1_0.secondary_color,
+        b1_0.updated_at,
+        b1_0.updated_by 
+    from
+        branding b1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=b1_0.masjid_id 
+    where
+        m1_0.id=?
+2026-07-28T20:28:00.598+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        ha1_0.id,
+        ha1_0.active,
+        ha1_0.created_at,
+        ha1_0.created_by,
+        ha1_0.description,
+        ha1_0.image,
+        ha1_0.is_active,
+        ha1_0.is_deleted,
+        ha1_0.masjid_id,
+        ha1_0.remarks,
+        ha1_0.status,
+        ha1_0.title,
+        ha1_0.updated_at,
+        ha1_0.updated_by 
+    from
+        home_announcements ha1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=ha1_0.masjid_id 
+    where
+        m1_0.id=?
+2026-07-28T20:28:00.605+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        pt1_0.id,
+        pt1_0.azaan_time,
+        pt1_0.created_at,
+        pt1_0.created_by,
+        pt1_0.hour,
+        pt1_0.icon,
+        pt1_0.is_active,
+        pt1_0.is_deleted,
+        pt1_0.masjid_id,
+        pt1_0.minute,
+        pt1_0.prayer_name,
+        pt1_0.prayer_time,
+        pt1_0.remarks,
+        pt1_0.sort_order,
+        pt1_0.updated_at,
+        pt1_0.updated_by 
+    from
+        prayer_times pt1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=pt1_0.masjid_id 
+    where
+        m1_0.id=? 
+    order by
+        pt1_0.sort_order
+2026-07-28T20:28:00.611+05:30 DEBUG 41476 --- [noor-backend] [io-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        jc1_0.id,
+        jc1_0.azaan_time,
+        jc1_0.created_at,
+        jc1_0.created_by,
+        jc1_0.is_active,
+        jc1_0.is_deleted,
+        jc1_0.masjid_id,
+        jc1_0.prayer_time,
+        jc1_0.remarks,
+        jc1_0.updated_at,
+        jc1_0.updated_by 
+    from
+        jumuah_config jc1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=jc1_0.masjid_id 
+    where
+        m1_0.id=?
+2026-07-28T20:28:00.618+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        rc1_0.id,
+        rc1_0.created_at,
+        rc1_0.created_by,
+        rc1_0.fitra_rate,
+        rc1_0.iftar_message,
+        rc1_0.is_active,
+        rc1_0.is_deleted,
+        rc1_0.masjid_id,
+        rc1_0.note,
+        rc1_0.remarks,
+        rc1_0.taraweeh,
+        rc1_0.updated_at,
+        rc1_0.updated_by 
+    from
+        ramadan_config rc1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=rc1_0.masjid_id 
+    where
+        m1_0.id=?
+2026-07-28T20:28:00.625+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        g1_0.id,
+        g1_0.active,
+        g1_0.contact,
+        g1_0.created_at,
+        g1_0.created_by,
+        g1_0.details,
+        g1_0.found,
+        g1_0.image,
+        g1_0.is_active,
+        g1_0.is_deleted,
+        g1_0.masjid_id,
+        g1_0.remarks,
+        g1_0.title,
+        g1_0.updated_at,
+        g1_0.updated_by 
+    from
+        gumshudas g1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=g1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and g1_0.is_deleted=? 
+    order by
+        g1_0.created_at desc
+2026-07-28T20:28:00.625+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        j1_0.id,
+        j1_0.active,
+        j1_0.created_at,
+        j1_0.created_by,
+        j1_0.event_date,
+        j1_0.is_active,
+        j1_0.is_deleted,
+        j1_0.location,
+        j1_0.masjid_id,
+        j1_0.remarks,
+        j1_0.time,
+        j1_0.title,
+        j1_0.updated_at,
+        j1_0.updated_by 
+    from
+        janazahs j1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=j1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and j1_0.is_deleted=? 
+    order by
+        j1_0.created_at desc
+2026-07-28T20:28:00.653+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        ga1_0.id,
+        ga1_0.active,
+        ga1_0.created_at,
+        ga1_0.created_by,
+        ga1_0.description,
+        ga1_0.icon,
+        ga1_0.is_active,
+        ga1_0.is_deleted,
+        ga1_0.masjid_id,
+        ga1_0.remarks,
+        ga1_0.title,
+        ga1_0.updated_at,
+        ga1_0.updated_by 
+    from
+        general_announcements ga1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=ga1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and ga1_0.is_deleted=? 
+    order by
+        ga1_0.created_at desc
+2026-07-28T20:28:00.656+05:30 DEBUG 41476 --- [noor-backend] [io-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        dc1_0.id,
+        dc1_0.badge,
+        dc1_0.created_at,
+        dc1_0.created_by,
+        dc1_0.description,
+        dc1_0.is_active,
+        dc1_0.is_deleted,
+        dc1_0.masjid_id,
+        dc1_0.qr_image,
+        dc1_0.remarks,
+        dc1_0.title,
+        dc1_0.updated_at,
+        dc1_0.updated_by,
+        dc1_0.upi 
+    from
+        donation_causes dc1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=dc1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and dc1_0.is_deleted=?
+2026-07-28T20:28:00.662+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        md1_0.id,
+        md1_0.amount,
+        md1_0.created_at,
+        md1_0.created_by,
+        md1_0.is_active,
+        md1_0.is_deleted,
+        md1_0.masjid_id,
+        md1_0.month,
+        md1_0.remarks,
+        md1_0.status,
+        md1_0.updated_at,
+        md1_0.updated_by 
+    from
+        monthly_donations md1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=md1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and md1_0.is_deleted=?
+2026-07-28T20:28:00.669+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        e1_0.id,
+        e1_0.created_at,
+        e1_0.created_by,
+        e1_0.is_active,
+        e1_0.is_deleted,
+        e1_0.label,
+        e1_0.masjid_id,
+        e1_0.remarks,
+        e1_0.updated_at,
+        e1_0.updated_by,
+        e1_0.value 
+    from
+        expenses e1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=e1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and e1_0.is_deleted=?
+2026-07-28T20:28:00.730+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        as1_0.id,
+        as1_0.created_at,
+        as1_0.created_by,
+        as1_0.description,
+        as1_0.icon,
+        as1_0.is_active,
+        as1_0.is_deleted,
+        as1_0.masjid_id,
+        as1_0.remarks,
+        as1_0.title,
+        as1_0.updated_at,
+        as1_0.updated_by 
+    from
+        about_services as1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=as1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and as1_0.is_deleted=?
+2026-07-28T20:28:00.734+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        ha1_0.id,
+        ha1_0.active,
+        ha1_0.created_at,
+        ha1_0.created_by,
+        ha1_0.description,
+        ha1_0.image,
+        ha1_0.is_active,
+        ha1_0.is_deleted,
+        ha1_0.masjid_id,
+        ha1_0.remarks,
+        ha1_0.status,
+        ha1_0.title,
+        ha1_0.updated_at,
+        ha1_0.updated_by 
+    from
+        home_announcements ha1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=ha1_0.masjid_id 
+    where
+        m1_0.id=?
+2026-07-28T20:28:00.734+05:30 DEBUG 41476 --- [noor-backend] [io-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        b1_0.id,
+        b1_0.created_at,
+        b1_0.created_by,
+        b1_0.is_active,
+        b1_0.is_deleted,
+        b1_0.logo,
+        b1_0.masjid_id,
+        b1_0.masjid_name,
+        b1_0.primary_color,
+        b1_0.remarks,
+        b1_0.secondary_color,
+        b1_0.updated_at,
+        b1_0.updated_by 
+    from
+        branding b1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=b1_0.masjid_id 
+    where
+        m1_0.id=?
+2026-07-28T20:28:00.739+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        pt1_0.id,
+        pt1_0.azaan_time,
+        pt1_0.created_at,
+        pt1_0.created_by,
+        pt1_0.hour,
+        pt1_0.icon,
+        pt1_0.is_active,
+        pt1_0.is_deleted,
+        pt1_0.masjid_id,
+        pt1_0.minute,
+        pt1_0.prayer_name,
+        pt1_0.prayer_time,
+        pt1_0.remarks,
+        pt1_0.sort_order,
+        pt1_0.updated_at,
+        pt1_0.updated_by 
+    from
+        prayer_times pt1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=pt1_0.masjid_id 
+    where
+        m1_0.id=? 
+    order by
+        pt1_0.sort_order
+2026-07-28T20:28:00.740+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        jc1_0.id,
+        jc1_0.azaan_time,
+        jc1_0.created_at,
+        jc1_0.created_by,
+        jc1_0.is_active,
+        jc1_0.is_deleted,
+        jc1_0.masjid_id,
+        jc1_0.prayer_time,
+        jc1_0.remarks,
+        jc1_0.updated_at,
+        jc1_0.updated_by 
+    from
+        jumuah_config jc1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=jc1_0.masjid_id 
+    where
+        m1_0.id=?
+2026-07-28T20:28:00.763+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        rc1_0.id,
+        rc1_0.created_at,
+        rc1_0.created_by,
+        rc1_0.fitra_rate,
+        rc1_0.iftar_message,
+        rc1_0.is_active,
+        rc1_0.is_deleted,
+        rc1_0.masjid_id,
+        rc1_0.note,
+        rc1_0.remarks,
+        rc1_0.taraweeh,
+        rc1_0.updated_at,
+        rc1_0.updated_by 
+    from
+        ramadan_config rc1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=rc1_0.masjid_id 
+    where
+        m1_0.id=?
+2026-07-28T20:28:00.765+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        tm1_0.id,
+        tm1_0.created_at,
+        tm1_0.created_by,
+        tm1_0.email,
+        tm1_0.image,
+        tm1_0.is_active,
+        tm1_0.is_deleted,
+        tm1_0.masjid_id,
+        tm1_0.mobile,
+        tm1_0.name,
+        tm1_0.remarks,
+        tm1_0.responsibilities,
+        tm1_0.role,
+        tm1_0.updated_at,
+        tm1_0.updated_by 
+    from
+        team_members tm1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=tm1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and tm1_0.is_deleted=?
+2026-07-28T20:28:00.771+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        j1_0.id,
+        j1_0.active,
+        j1_0.created_at,
+        j1_0.created_by,
+        j1_0.event_date,
+        j1_0.is_active,
+        j1_0.is_deleted,
+        j1_0.location,
+        j1_0.masjid_id,
+        j1_0.remarks,
+        j1_0.time,
+        j1_0.title,
+        j1_0.updated_at,
+        j1_0.updated_by 
+    from
+        janazahs j1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=j1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and j1_0.is_deleted=? 
+    order by
+        j1_0.created_at desc
+2026-07-28T20:28:00.785+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        ga1_0.id,
+        ga1_0.active,
+        ga1_0.created_at,
+        ga1_0.created_by,
+        ga1_0.description,
+        ga1_0.icon,
+        ga1_0.is_active,
+        ga1_0.is_deleted,
+        ga1_0.masjid_id,
+        ga1_0.remarks,
+        ga1_0.title,
+        ga1_0.updated_at,
+        ga1_0.updated_by 
+    from
+        general_announcements ga1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=ga1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and ga1_0.is_deleted=? 
+    order by
+        ga1_0.created_at desc
+2026-07-28T20:28:00.785+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.arabic,
+        s1_0.category,
+        s1_0.created_at,
+        s1_0.created_by,
+        s1_0.is_active,
+        s1_0.is_deleted,
+        s1_0.masjid_id,
+        s1_0.meaning,
+        s1_0.remarks,
+        s1_0.title,
+        s1_0.transliteration,
+        s1_0.updated_at,
+        s1_0.updated_by 
+    from
+        sunnahs s1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=s1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and s1_0.is_deleted=?
+2026-07-28T20:28:00.786+05:30 DEBUG 41476 --- [noor-backend] [io-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        g1_0.id,
+        g1_0.active,
+        g1_0.contact,
+        g1_0.created_at,
+        g1_0.created_by,
+        g1_0.details,
+        g1_0.found,
+        g1_0.image,
+        g1_0.is_active,
+        g1_0.is_deleted,
+        g1_0.masjid_id,
+        g1_0.remarks,
+        g1_0.title,
+        g1_0.updated_at,
+        g1_0.updated_by 
+    from
+        gumshudas g1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=g1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and g1_0.is_deleted=? 
+    order by
+        g1_0.created_at desc
+2026-07-28T20:28:00.796+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        dc1_0.id,
+        dc1_0.badge,
+        dc1_0.created_at,
+        dc1_0.created_by,
+        dc1_0.description,
+        dc1_0.is_active,
+        dc1_0.is_deleted,
+        dc1_0.masjid_id,
+        dc1_0.qr_image,
+        dc1_0.remarks,
+        dc1_0.title,
+        dc1_0.updated_at,
+        dc1_0.updated_by,
+        dc1_0.upi 
+    from
+        donation_causes dc1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=dc1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and dc1_0.is_deleted=?
+2026-07-28T20:28:00.801+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        md1_0.id,
+        md1_0.amount,
+        md1_0.created_at,
+        md1_0.created_by,
+        md1_0.is_active,
+        md1_0.is_deleted,
+        md1_0.masjid_id,
+        md1_0.month,
+        md1_0.remarks,
+        md1_0.status,
+        md1_0.updated_at,
+        md1_0.updated_by 
+    from
+        monthly_donations md1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=md1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and md1_0.is_deleted=?
+2026-07-28T20:28:00.834+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        e1_0.id,
+        e1_0.created_at,
+        e1_0.created_by,
+        e1_0.is_active,
+        e1_0.is_deleted,
+        e1_0.label,
+        e1_0.masjid_id,
+        e1_0.remarks,
+        e1_0.updated_at,
+        e1_0.updated_by,
+        e1_0.value 
+    from
+        expenses e1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=e1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and e1_0.is_deleted=?
+2026-07-28T20:28:00.839+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        as1_0.id,
+        as1_0.created_at,
+        as1_0.created_by,
+        as1_0.description,
+        as1_0.icon,
+        as1_0.is_active,
+        as1_0.is_deleted,
+        as1_0.masjid_id,
+        as1_0.remarks,
+        as1_0.title,
+        as1_0.updated_at,
+        as1_0.updated_by 
+    from
+        about_services as1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=as1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and as1_0.is_deleted=?
+2026-07-28T20:28:00.845+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.arabic,
+        s1_0.category,
+        s1_0.created_at,
+        s1_0.created_by,
+        s1_0.is_active,
+        s1_0.is_deleted,
+        s1_0.masjid_id,
+        s1_0.meaning,
+        s1_0.remarks,
+        s1_0.title,
+        s1_0.transliteration,
+        s1_0.updated_at,
+        s1_0.updated_by 
+    from
+        sunnahs s1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=s1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and s1_0.is_deleted=?
+2026-07-28T20:28:00.854+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        tm1_0.id,
+        tm1_0.created_at,
+        tm1_0.created_by,
+        tm1_0.email,
+        tm1_0.image,
+        tm1_0.is_active,
+        tm1_0.is_deleted,
+        tm1_0.masjid_id,
+        tm1_0.mobile,
+        tm1_0.name,
+        tm1_0.remarks,
+        tm1_0.responsibilities,
+        tm1_0.role,
+        tm1_0.updated_at,
+        tm1_0.updated_by 
+    from
+        team_members tm1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=tm1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and tm1_0.is_deleted=?
+2026-07-28T20:38:59.006+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        asb1_0.id,
+        asb1_0.broadcast_date,
+        asb1_0.created_at,
+        asb1_0.created_by,
+        asb1_0.is_active,
+        asb1_0.is_deleted,
+        asb1_0.masjid_id,
+        asb1_0.remarks,
+        asb1_0.sunnah_id,
+        asb1_0.updated_at,
+        asb1_0.updated_by 
+    from
+        active_sunnah_broadcasts asb1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=asb1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and asb1_0.broadcast_date=?
+2026-07-28T20:39:52.597+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        jc1_0.id,
+        jc1_0.azaan_time,
+        jc1_0.created_at,
+        jc1_0.created_by,
+        jc1_0.is_active,
+        jc1_0.is_deleted,
+        jc1_0.masjid_id,
+        jc1_0.prayer_time,
+        jc1_0.remarks,
+        jc1_0.updated_at,
+        jc1_0.updated_by 
+    from
+        jumuah_config jc1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=jc1_0.masjid_id 
+    where
+        m1_0.id=?
+2026-07-28T20:39:52.597+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        ha1_0.id,
+        ha1_0.active,
+        ha1_0.created_at,
+        ha1_0.created_by,
+        ha1_0.description,
+        ha1_0.image,
+        ha1_0.is_active,
+        ha1_0.is_deleted,
+        ha1_0.masjid_id,
+        ha1_0.remarks,
+        ha1_0.status,
+        ha1_0.title,
+        ha1_0.updated_at,
+        ha1_0.updated_by 
+    from
+        home_announcements ha1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=ha1_0.masjid_id 
+    where
+        m1_0.id=?
+2026-07-28T20:39:52.597+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        j1_0.id,
+        j1_0.active,
+        j1_0.created_at,
+        j1_0.created_by,
+        j1_0.event_date,
+        j1_0.is_active,
+        j1_0.is_deleted,
+        j1_0.location,
+        j1_0.masjid_id,
+        j1_0.remarks,
+        j1_0.time,
+        j1_0.title,
+        j1_0.updated_at,
+        j1_0.updated_by 
+    from
+        janazahs j1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=j1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and j1_0.is_deleted=? 
+    order by
+        j1_0.created_at desc
+2026-07-28T20:39:52.597+05:30 DEBUG 41476 --- [noor-backend] [io-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        rc1_0.id,
+        rc1_0.created_at,
+        rc1_0.created_by,
+        rc1_0.fitra_rate,
+        rc1_0.iftar_message,
+        rc1_0.is_active,
+        rc1_0.is_deleted,
+        rc1_0.masjid_id,
+        rc1_0.note,
+        rc1_0.remarks,
+        rc1_0.taraweeh,
+        rc1_0.updated_at,
+        rc1_0.updated_by 
+    from
+        ramadan_config rc1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=rc1_0.masjid_id 
+    where
+        m1_0.id=?
+2026-07-28T20:39:52.597+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        pt1_0.id,
+        pt1_0.azaan_time,
+        pt1_0.created_at,
+        pt1_0.created_by,
+        pt1_0.hour,
+        pt1_0.icon,
+        pt1_0.is_active,
+        pt1_0.is_deleted,
+        pt1_0.masjid_id,
+        pt1_0.minute,
+        pt1_0.prayer_name,
+        pt1_0.prayer_time,
+        pt1_0.remarks,
+        pt1_0.sort_order,
+        pt1_0.updated_at,
+        pt1_0.updated_by 
+    from
+        prayer_times pt1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=pt1_0.masjid_id 
+    where
+        m1_0.id=? 
+    order by
+        pt1_0.sort_order
+2026-07-28T20:39:52.615+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        b1_0.id,
+        b1_0.created_at,
+        b1_0.created_by,
+        b1_0.is_active,
+        b1_0.is_deleted,
+        b1_0.logo,
+        b1_0.masjid_id,
+        b1_0.masjid_name,
+        b1_0.primary_color,
+        b1_0.remarks,
+        b1_0.secondary_color,
+        b1_0.updated_at,
+        b1_0.updated_by 
+    from
+        branding b1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=b1_0.masjid_id 
+    where
+        m1_0.id=?
+2026-07-28T20:39:52.705+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        dc1_0.id,
+        dc1_0.badge,
+        dc1_0.created_at,
+        dc1_0.created_by,
+        dc1_0.description,
+        dc1_0.is_active,
+        dc1_0.is_deleted,
+        dc1_0.masjid_id,
+        dc1_0.qr_image,
+        dc1_0.remarks,
+        dc1_0.title,
+        dc1_0.updated_at,
+        dc1_0.updated_by,
+        dc1_0.upi 
+    from
+        donation_causes dc1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=dc1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and dc1_0.is_deleted=?
+2026-07-28T20:39:52.709+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        g1_0.id,
+        g1_0.active,
+        g1_0.contact,
+        g1_0.created_at,
+        g1_0.created_by,
+        g1_0.details,
+        g1_0.found,
+        g1_0.image,
+        g1_0.is_active,
+        g1_0.is_deleted,
+        g1_0.masjid_id,
+        g1_0.remarks,
+        g1_0.title,
+        g1_0.updated_at,
+        g1_0.updated_by 
+    from
+        gumshudas g1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=g1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and g1_0.is_deleted=? 
+    order by
+        g1_0.created_at desc
+2026-07-28T20:39:52.709+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        ga1_0.id,
+        ga1_0.active,
+        ga1_0.created_at,
+        ga1_0.created_by,
+        ga1_0.description,
+        ga1_0.icon,
+        ga1_0.is_active,
+        ga1_0.is_deleted,
+        ga1_0.masjid_id,
+        ga1_0.remarks,
+        ga1_0.title,
+        ga1_0.updated_at,
+        ga1_0.updated_by 
+    from
+        general_announcements ga1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=ga1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and ga1_0.is_deleted=? 
+    order by
+        ga1_0.created_at desc
+2026-07-28T20:39:52.754+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        md1_0.id,
+        md1_0.amount,
+        md1_0.created_at,
+        md1_0.created_by,
+        md1_0.is_active,
+        md1_0.is_deleted,
+        md1_0.masjid_id,
+        md1_0.month,
+        md1_0.remarks,
+        md1_0.status,
+        md1_0.updated_at,
+        md1_0.updated_by 
+    from
+        monthly_donations md1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=md1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and md1_0.is_deleted=?
+2026-07-28T20:39:52.756+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        e1_0.id,
+        e1_0.created_at,
+        e1_0.created_by,
+        e1_0.is_active,
+        e1_0.is_deleted,
+        e1_0.label,
+        e1_0.masjid_id,
+        e1_0.remarks,
+        e1_0.updated_at,
+        e1_0.updated_by,
+        e1_0.value 
+    from
+        expenses e1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=e1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and e1_0.is_deleted=?
+2026-07-28T20:39:52.780+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        as1_0.id,
+        as1_0.created_at,
+        as1_0.created_by,
+        as1_0.description,
+        as1_0.icon,
+        as1_0.is_active,
+        as1_0.is_deleted,
+        as1_0.masjid_id,
+        as1_0.remarks,
+        as1_0.title,
+        as1_0.updated_at,
+        as1_0.updated_by 
+    from
+        about_services as1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=as1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and as1_0.is_deleted=?
+2026-07-28T20:39:52.806+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        tm1_0.id,
+        tm1_0.created_at,
+        tm1_0.created_by,
+        tm1_0.email,
+        tm1_0.image,
+        tm1_0.is_active,
+        tm1_0.is_deleted,
+        tm1_0.masjid_id,
+        tm1_0.mobile,
+        tm1_0.name,
+        tm1_0.remarks,
+        tm1_0.responsibilities,
+        tm1_0.role,
+        tm1_0.updated_at,
+        tm1_0.updated_by 
+    from
+        team_members tm1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=tm1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and tm1_0.is_deleted=?
+2026-07-28T20:39:52.826+05:30 DEBUG 41476 --- [noor-backend] [io-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.arabic,
+        s1_0.category,
+        s1_0.created_at,
+        s1_0.created_by,
+        s1_0.is_active,
+        s1_0.is_deleted,
+        s1_0.masjid_id,
+        s1_0.meaning,
+        s1_0.remarks,
+        s1_0.title,
+        s1_0.transliteration,
+        s1_0.updated_at,
+        s1_0.updated_by 
+    from
+        sunnahs s1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=s1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and s1_0.is_deleted=?
+2026-07-28T20:40:00.871+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        pt1_0.id,
+        pt1_0.azaan_time,
+        pt1_0.created_at,
+        pt1_0.created_by,
+        pt1_0.hour,
+        pt1_0.icon,
+        pt1_0.is_active,
+        pt1_0.is_deleted,
+        pt1_0.masjid_id,
+        pt1_0.minute,
+        pt1_0.prayer_name,
+        pt1_0.prayer_time,
+        pt1_0.remarks,
+        pt1_0.sort_order,
+        pt1_0.updated_at,
+        pt1_0.updated_by 
+    from
+        prayer_times pt1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=pt1_0.masjid_id 
+    where
+        m1_0.id=?
+2026-07-28T20:40:01.037+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        m1_0.id,
+        m1_0.address,
+        m1_0.city,
+        m1_0.country,
+        m1_0.created_at,
+        m1_0.created_by,
+        m1_0.email,
+        m1_0.is_active,
+        m1_0.is_deleted,
+        m1_0.logo,
+        m1_0.name,
+        m1_0.phone,
+        m1_0.pincode,
+        m1_0.remarks,
+        m1_0.state,
+        m1_0.updated_at,
+        m1_0.updated_by,
+        m1_0.website 
+    from
+        masjids m1_0 
+    where
+        m1_0.id=?
+2026-07-28T20:40:01.121+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-3] org.hibernate.SQL                        : 
+    insert 
+    into
+        prayer_times
+        (azaan_time, created_at, created_by, hour, icon, is_active, is_deleted, masjid_id, minute, prayer_name, prayer_time, remarks, sort_order, updated_at, updated_by) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-07-28T20:40:01.192+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-3] org.hibernate.SQL                        : 
+    insert 
+    into
+        prayer_times
+        (azaan_time, created_at, created_by, hour, icon, is_active, is_deleted, masjid_id, minute, prayer_name, prayer_time, remarks, sort_order, updated_at, updated_by) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-07-28T20:40:01.211+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-3] org.hibernate.SQL                        : 
+    insert 
+    into
+        prayer_times
+        (azaan_time, created_at, created_by, hour, icon, is_active, is_deleted, masjid_id, minute, prayer_name, prayer_time, remarks, sort_order, updated_at, updated_by) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-07-28T20:40:01.460+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-3] org.hibernate.SQL                        : 
+    insert 
+    into
+        prayer_times
+        (azaan_time, created_at, created_by, hour, icon, is_active, is_deleted, masjid_id, minute, prayer_name, prayer_time, remarks, sort_order, updated_at, updated_by) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-07-28T20:40:01.480+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-3] org.hibernate.SQL                        : 
+    insert 
+    into
+        prayer_times
+        (azaan_time, created_at, created_by, hour, icon, is_active, is_deleted, masjid_id, minute, prayer_name, prayer_time, remarks, sort_order, updated_at, updated_by) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2026-07-28T20:40:01.738+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-3] org.hibernate.SQL                        : 
+    delete 
+    from
+        prayer_times 
+    where
+        id=?
+2026-07-28T20:40:01.771+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-3] org.hibernate.SQL                        : 
+    delete 
+    from
+        prayer_times 
+    where
+        id=?
+2026-07-28T20:40:01.783+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-3] org.hibernate.SQL                        : 
+    delete 
+    from
+        prayer_times 
+    where
+        id=?
+2026-07-28T20:40:01.793+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-3] org.hibernate.SQL                        : 
+    delete 
+    from
+        prayer_times 
+    where
+        id=?
+2026-07-28T20:40:01.802+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-3] org.hibernate.SQL                        : 
+    delete 
+    from
+        prayer_times 
+    where
+        id=?
+2026-07-28T20:40:02.035+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        b1_0.id,
+        b1_0.created_at,
+        b1_0.created_by,
+        b1_0.is_active,
+        b1_0.is_deleted,
+        b1_0.logo,
+        b1_0.masjid_id,
+        b1_0.masjid_name,
+        b1_0.primary_color,
+        b1_0.remarks,
+        b1_0.secondary_color,
+        b1_0.updated_at,
+        b1_0.updated_by 
+    from
+        branding b1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=b1_0.masjid_id 
+    where
+        m1_0.id=?
+2026-07-28T20:40:02.035+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        ha1_0.id,
+        ha1_0.active,
+        ha1_0.created_at,
+        ha1_0.created_by,
+        ha1_0.description,
+        ha1_0.image,
+        ha1_0.is_active,
+        ha1_0.is_deleted,
+        ha1_0.masjid_id,
+        ha1_0.remarks,
+        ha1_0.status,
+        ha1_0.title,
+        ha1_0.updated_at,
+        ha1_0.updated_by 
+    from
+        home_announcements ha1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=ha1_0.masjid_id 
+    where
+        m1_0.id=?
+2026-07-28T20:40:02.037+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        pt1_0.id,
+        pt1_0.azaan_time,
+        pt1_0.created_at,
+        pt1_0.created_by,
+        pt1_0.hour,
+        pt1_0.icon,
+        pt1_0.is_active,
+        pt1_0.is_deleted,
+        pt1_0.masjid_id,
+        pt1_0.minute,
+        pt1_0.prayer_name,
+        pt1_0.prayer_time,
+        pt1_0.remarks,
+        pt1_0.sort_order,
+        pt1_0.updated_at,
+        pt1_0.updated_by 
+    from
+        prayer_times pt1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=pt1_0.masjid_id 
+    where
+        m1_0.id=? 
+    order by
+        pt1_0.sort_order
+2026-07-28T20:40:02.051+05:30 DEBUG 41476 --- [noor-backend] [io-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        jc1_0.id,
+        jc1_0.azaan_time,
+        jc1_0.created_at,
+        jc1_0.created_by,
+        jc1_0.is_active,
+        jc1_0.is_deleted,
+        jc1_0.masjid_id,
+        jc1_0.prayer_time,
+        jc1_0.remarks,
+        jc1_0.updated_at,
+        jc1_0.updated_by 
+    from
+        jumuah_config jc1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=jc1_0.masjid_id 
+    where
+        m1_0.id=?
+2026-07-28T20:40:02.059+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        rc1_0.id,
+        rc1_0.created_at,
+        rc1_0.created_by,
+        rc1_0.fitra_rate,
+        rc1_0.iftar_message,
+        rc1_0.is_active,
+        rc1_0.is_deleted,
+        rc1_0.masjid_id,
+        rc1_0.note,
+        rc1_0.remarks,
+        rc1_0.taraweeh,
+        rc1_0.updated_at,
+        rc1_0.updated_by 
+    from
+        ramadan_config rc1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=rc1_0.masjid_id 
+    where
+        m1_0.id=?
+2026-07-28T20:40:02.089+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        j1_0.id,
+        j1_0.active,
+        j1_0.created_at,
+        j1_0.created_by,
+        j1_0.event_date,
+        j1_0.is_active,
+        j1_0.is_deleted,
+        j1_0.location,
+        j1_0.masjid_id,
+        j1_0.remarks,
+        j1_0.time,
+        j1_0.title,
+        j1_0.updated_at,
+        j1_0.updated_by 
+    from
+        janazahs j1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=j1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and j1_0.is_deleted=? 
+    order by
+        j1_0.created_at desc
+2026-07-28T20:40:02.112+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        g1_0.id,
+        g1_0.active,
+        g1_0.contact,
+        g1_0.created_at,
+        g1_0.created_by,
+        g1_0.details,
+        g1_0.found,
+        g1_0.image,
+        g1_0.is_active,
+        g1_0.is_deleted,
+        g1_0.masjid_id,
+        g1_0.remarks,
+        g1_0.title,
+        g1_0.updated_at,
+        g1_0.updated_by 
+    from
+        gumshudas g1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=g1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and g1_0.is_deleted=? 
+    order by
+        g1_0.created_at desc
+2026-07-28T20:40:02.112+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        dc1_0.id,
+        dc1_0.badge,
+        dc1_0.created_at,
+        dc1_0.created_by,
+        dc1_0.description,
+        dc1_0.is_active,
+        dc1_0.is_deleted,
+        dc1_0.masjid_id,
+        dc1_0.qr_image,
+        dc1_0.remarks,
+        dc1_0.title,
+        dc1_0.updated_at,
+        dc1_0.updated_by,
+        dc1_0.upi 
+    from
+        donation_causes dc1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=dc1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and dc1_0.is_deleted=?
+2026-07-28T20:40:02.116+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        ga1_0.id,
+        ga1_0.active,
+        ga1_0.created_at,
+        ga1_0.created_by,
+        ga1_0.description,
+        ga1_0.icon,
+        ga1_0.is_active,
+        ga1_0.is_deleted,
+        ga1_0.masjid_id,
+        ga1_0.remarks,
+        ga1_0.title,
+        ga1_0.updated_at,
+        ga1_0.updated_by 
+    from
+        general_announcements ga1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=ga1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and ga1_0.is_deleted=? 
+    order by
+        ga1_0.created_at desc
+2026-07-28T20:40:02.124+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        e1_0.id,
+        e1_0.created_at,
+        e1_0.created_by,
+        e1_0.is_active,
+        e1_0.is_deleted,
+        e1_0.label,
+        e1_0.masjid_id,
+        e1_0.remarks,
+        e1_0.updated_at,
+        e1_0.updated_by,
+        e1_0.value 
+    from
+        expenses e1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=e1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and e1_0.is_deleted=?
+2026-07-28T20:40:02.131+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        md1_0.id,
+        md1_0.amount,
+        md1_0.created_at,
+        md1_0.created_by,
+        md1_0.is_active,
+        md1_0.is_deleted,
+        md1_0.masjid_id,
+        md1_0.month,
+        md1_0.remarks,
+        md1_0.status,
+        md1_0.updated_at,
+        md1_0.updated_by 
+    from
+        monthly_donations md1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=md1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and md1_0.is_deleted=?
+2026-07-28T20:40:02.155+05:30 DEBUG 41476 --- [noor-backend] [io-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.arabic,
+        s1_0.category,
+        s1_0.created_at,
+        s1_0.created_by,
+        s1_0.is_active,
+        s1_0.is_deleted,
+        s1_0.masjid_id,
+        s1_0.meaning,
+        s1_0.remarks,
+        s1_0.title,
+        s1_0.transliteration,
+        s1_0.updated_at,
+        s1_0.updated_by 
+    from
+        sunnahs s1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=s1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and s1_0.is_deleted=?
+2026-07-28T20:40:02.158+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        tm1_0.id,
+        tm1_0.created_at,
+        tm1_0.created_by,
+        tm1_0.email,
+        tm1_0.image,
+        tm1_0.is_active,
+        tm1_0.is_deleted,
+        tm1_0.masjid_id,
+        tm1_0.mobile,
+        tm1_0.name,
+        tm1_0.remarks,
+        tm1_0.responsibilities,
+        tm1_0.role,
+        tm1_0.updated_at,
+        tm1_0.updated_by 
+    from
+        team_members tm1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=tm1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and tm1_0.is_deleted=?
+2026-07-28T20:40:02.170+05:30 DEBUG 41476 --- [noor-backend] [nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        as1_0.id,
+        as1_0.created_at,
+        as1_0.created_by,
+        as1_0.description,
+        as1_0.icon,
+        as1_0.is_active,
+        as1_0.is_deleted,
+        as1_0.masjid_id,
+        as1_0.remarks,
+        as1_0.title,
+        as1_0.updated_at,
+        as1_0.updated_by 
+    from
+        about_services as1_0 
+    left join
+        masjids m1_0 
+            on m1_0.id=as1_0.masjid_id 
+    where
+        m1_0.id=? 
+        and as1_0.is_deleted=?

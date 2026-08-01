@@ -1,0 +1,4 @@
+ALTER TABLE gumshudas ALTER COLUMN image TYPE TEXT;
+ALTER TABLE home_announcements ALTER COLUMN image TYPE TEXT;
+ALTER TABLE team_members ALTER COLUMN image TYPE TEXT;
+ALTER TABLE donation_causes ALTER COLUMN qr_image TYPE TEXT;
