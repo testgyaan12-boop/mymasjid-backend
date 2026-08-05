@@ -11,6 +11,8 @@ import java.util.List;
 @Service
 public class CmsService {
 
+    private final PushNotificationService pushNotificationService;
+
     private final BrandingRepository brandingRepository;
     private final HomeAnnouncementRepository homeAnnouncementRepository;
     private final PrayerTimeRepository prayerTimeRepository;
@@ -26,7 +28,8 @@ public class CmsService {
     private final TeamMemberRepository teamMemberRepository;
     private final MasjidRepository masjidRepository;
 
-    public CmsService(BrandingRepository brandingRepository,
+    public CmsService(PushNotificationService pushNotificationService,
+                      BrandingRepository brandingRepository,
                       HomeAnnouncementRepository homeAnnouncementRepository,
                       PrayerTimeRepository prayerTimeRepository,
                       JumuahConfigRepository jumuahConfigRepository,
@@ -54,6 +57,7 @@ public class CmsService {
         this.aboutServiceRepository = aboutServiceRepository;
         this.teamMemberRepository = teamMemberRepository;
         this.masjidRepository = masjidRepository;
+        this.pushNotificationService = pushNotificationService;
     }
 
     private Masjid getMasjid(Long masjidId) {
@@ -139,7 +143,16 @@ public class CmsService {
 
     public Janazah saveJanazah(Long masjidId, Janazah janazah) {
         janazah.setMasjid(getMasjid(masjidId));
-        return janazahRepository.save(janazah);
+        Janazah saved = janazahRepository.save(janazah);
+        try {
+            pushNotificationService.sendToMasjid(masjidId,
+                    "Janazah Alert",
+                    "Janazah: " + (saved.getTitle() == null ? "Prayer announced" : saved.getTitle()),
+                    "janazah");
+        } catch (Exception e) {
+            // Never block the CMS save on push delivery
+        }
+        return saved;
     }
 
     public void deleteJanazah(Long id) {
@@ -154,7 +167,16 @@ public class CmsService {
 
     public Gumshuda saveGumshuda(Long masjidId, Gumshuda gumshuda) {
         gumshuda.setMasjid(getMasjid(masjidId));
-        return gumshudaRepository.save(gumshuda);
+        Gumshuda saved = gumshudaRepository.save(gumshuda);
+        try {
+            pushNotificationService.sendToMasjid(masjidId,
+                    "Missing Person Alert",
+                    "Missing: " + (saved.getTitle() == null ? "Please look out" : saved.getTitle()),
+                    "missing");
+        } catch (Exception e) {
+            // Never block the CMS save on push delivery
+        }
+        return saved;
     }
 
     public void deleteGumshuda(Long id) {
@@ -169,7 +191,16 @@ public class CmsService {
 
     public GeneralAnnouncement saveAnnouncement(Long masjidId, GeneralAnnouncement a) {
         a.setMasjid(getMasjid(masjidId));
-        return generalAnnouncementRepository.save(a);
+        GeneralAnnouncement saved = generalAnnouncementRepository.save(a);
+        try {
+            pushNotificationService.sendToMasjid(masjidId,
+                    "New Announcement",
+                    saved.getTitle() == null ? "Check the latest update" : saved.getTitle(),
+                    "announcement");
+        } catch (Exception e) {
+            // Never block the CMS save on push delivery
+        }
+        return saved;
     }
 
     public void deleteAnnouncement(Long id) {
