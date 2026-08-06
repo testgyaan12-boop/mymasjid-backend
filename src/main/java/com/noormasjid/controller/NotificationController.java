@@ -4,7 +4,9 @@ import com.noormasjid.dto.request.RegisterDeviceRequest;
 import com.noormasjid.dto.request.SendNotificationRequest;
 import com.noormasjid.entity.auth.User;
 import com.noormasjid.entity.masjid.Masjid;
+import com.noormasjid.entity.notification.AppNotification;
 import com.noormasjid.entity.notification.DeviceToken;
+import com.noormasjid.repository.AppNotificationRepository;
 import com.noormasjid.repository.DeviceTokenRepository;
 import com.noormasjid.repository.MasjidRepository;
 import com.noormasjid.repository.UserRepository;
@@ -14,6 +16,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -24,15 +27,18 @@ public class NotificationController {
     private final UserRepository userRepository;
     private final MasjidRepository masjidRepository;
     private final PushNotificationService pushNotificationService;
+    private final AppNotificationRepository appNotificationRepository;
 
     public NotificationController(DeviceTokenRepository deviceTokenRepository,
                                   UserRepository userRepository,
                                   MasjidRepository masjidRepository,
-                                  PushNotificationService pushNotificationService) {
+                                  PushNotificationService pushNotificationService,
+                                  AppNotificationRepository appNotificationRepository) {
         this.deviceTokenRepository = deviceTokenRepository;
         this.userRepository = userRepository;
         this.masjidRepository = masjidRepository;
         this.pushNotificationService = pushNotificationService;
+        this.appNotificationRepository = appNotificationRepository;
     }
 
     @PostMapping("/register")
@@ -80,5 +86,48 @@ public class NotificationController {
             deviceTokenRepository.deleteByToken(token);
         }
         return ResponseEntity.ok(Map.of("status", "unregistered"));
+    }
+
+    @GetMapping
+    public List<Map<String, Object>> list(@RequestParam Long masjidId) {
+        return appNotificationRepository
+                .findByMasjidIdAndIsDeletedOrderByCreatedAtDesc(masjidId, 0)
+                .stream()
+                .map(this::toDto)
+                .toList();
+    }
+
+    @GetMapping("/unread-count")
+    public ResponseEntity<Map<String, Long>> unreadCount(@RequestParam Long masjidId) {
+        long count = appNotificationRepository
+                .countByMasjidIdAndIsReadFalseAndIsDeleted(masjidId, 0);
+        return ResponseEntity.ok(Map.of("count", count));
+    }
+
+    @PostMapping("/read-all")
+    public ResponseEntity<Map<String, String>> markAllRead(@RequestParam Long masjidId) {
+        appNotificationRepository.markAllRead(masjidId);
+        return ResponseEntity.ok(Map.of("status", "read"));
+    }
+
+    @PostMapping("/{id}/read")
+    public ResponseEntity<Map<String, String>> markRead(@PathVariable Long id) {
+        appNotificationRepository.findById(id).ifPresent(n -> {
+            n.setIsRead(true);
+            n.setReadAt(java.time.LocalDateTime.now());
+            appNotificationRepository.save(n);
+        });
+        return ResponseEntity.ok(Map.of("status", "read"));
+    }
+
+    private Map<String, Object> toDto(AppNotification n) {
+        return Map.of(
+                "id", n.getId(),
+                "title", n.getTitle() == null ? "" : n.getTitle(),
+                "message", n.getMessage() == null ? "" : n.getMessage(),
+                "type", n.getType() == null ? "alert" : n.getType(),
+                "isRead", n.getIsRead() == null ? false : n.getIsRead(),
+                "createdAt", n.getCreatedAt() == null ? "" : n.getCreatedAt().toString()
+        );
     }
 }

@@ -2,6 +2,7 @@ package com.noormasjid.service;
 
 import com.noormasjid.entity.cms.*;
 import com.noormasjid.entity.masjid.Masjid;
+import com.noormasjid.entity.notification.AppNotification;
 import com.noormasjid.repository.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +28,7 @@ public class CmsService {
     private final AboutServiceRepository aboutServiceRepository;
     private final TeamMemberRepository teamMemberRepository;
     private final MasjidRepository masjidRepository;
+    private final AppNotificationRepository appNotificationRepository;
 
     public CmsService(PushNotificationService pushNotificationService,
                       BrandingRepository brandingRepository,
@@ -42,7 +44,8 @@ public class CmsService {
                       ExpenseRepository expenseRepository,
                       AboutServiceRepository aboutServiceRepository,
                       TeamMemberRepository teamMemberRepository,
-                      MasjidRepository masjidRepository) {
+                      MasjidRepository masjidRepository,
+                      AppNotificationRepository appNotificationRepository) {
         this.brandingRepository = brandingRepository;
         this.homeAnnouncementRepository = homeAnnouncementRepository;
         this.prayerTimeRepository = prayerTimeRepository;
@@ -57,12 +60,32 @@ public class CmsService {
         this.aboutServiceRepository = aboutServiceRepository;
         this.teamMemberRepository = teamMemberRepository;
         this.masjidRepository = masjidRepository;
+        this.appNotificationRepository = appNotificationRepository;
         this.pushNotificationService = pushNotificationService;
     }
 
     private Masjid getMasjid(Long masjidId) {
         return masjidRepository.findById(masjidId)
                 .orElseThrow(() -> new IllegalArgumentException("Masjid not found"));
+    }
+
+    private void notifyMembers(Long masjidId, String title, String message, String type) {
+        try {
+            AppNotification n = new AppNotification();
+            n.setMasjid(getMasjid(masjidId));
+            n.setTitle(title);
+            n.setMessage(message);
+            n.setType(type == null ? "alert" : type);
+            n.setIsRead(false);
+            appNotificationRepository.save(n);
+        } catch (Exception e) {
+            // Never block the CMS save on notification persistence
+        }
+        try {
+            pushNotificationService.sendToMasjid(masjidId, title, message, type);
+        } catch (Exception e) {
+            // Never block the CMS save on push delivery
+        }
     }
 
     public Branding getBranding(Long masjidId) {
@@ -108,7 +131,11 @@ public class CmsService {
             pt.setMasjid(masjid);
             pt.setSortOrder(i);
         }
-        return prayerTimeRepository.saveAll(times);
+        List<PrayerTime> saved = prayerTimeRepository.saveAll(times);
+        notifyMembers(masjidId, "Prayer Times Updated",
+                saved.size() + " prayer timing(s) updated",
+                "prayer-times");
+        return saved;
     }
 
     public JumuahConfig getJumuah(Long masjidId) {
@@ -120,7 +147,11 @@ public class CmsService {
         existing.setMasjid(getMasjid(masjidId));
         existing.setPrayerTime(config.getPrayerTime());
         existing.setAzaanTime(config.getAzaanTime());
-        return jumuahConfigRepository.save(existing);
+        JumuahConfig saved = jumuahConfigRepository.save(existing);
+        notifyMembers(masjidId, "Jumuah Prayer Time Updated",
+                "Friday prayer updated" + (config.getPrayerTime() == null ? "" : " to " + config.getPrayerTime()),
+                "jumuah");
+        return saved;
     }
 
     public RamadanConfig getRamadan(Long masjidId) {
@@ -144,14 +175,9 @@ public class CmsService {
     public Janazah saveJanazah(Long masjidId, Janazah janazah) {
         janazah.setMasjid(getMasjid(masjidId));
         Janazah saved = janazahRepository.save(janazah);
-        try {
-            pushNotificationService.sendToMasjid(masjidId,
-                    "Janazah Alert",
-                    "Janazah: " + (saved.getTitle() == null ? "Prayer announced" : saved.getTitle()),
-                    "janazah");
-        } catch (Exception e) {
-            // Never block the CMS save on push delivery
-        }
+        notifyMembers(masjidId, "Janazah Alert",
+                "Janazah: " + (saved.getTitle() == null ? "Prayer announced" : saved.getTitle()),
+                "janazah");
         return saved;
     }
 
@@ -168,14 +194,9 @@ public class CmsService {
     public Gumshuda saveGumshuda(Long masjidId, Gumshuda gumshuda) {
         gumshuda.setMasjid(getMasjid(masjidId));
         Gumshuda saved = gumshudaRepository.save(gumshuda);
-        try {
-            pushNotificationService.sendToMasjid(masjidId,
-                    "Missing Person Alert",
-                    "Missing: " + (saved.getTitle() == null ? "Please look out" : saved.getTitle()),
-                    "missing");
-        } catch (Exception e) {
-            // Never block the CMS save on push delivery
-        }
+        notifyMembers(masjidId, "Missing Person Alert",
+                "Missing: " + (saved.getTitle() == null ? "Please look out" : saved.getTitle()),
+                "missing");
         return saved;
     }
 
@@ -192,14 +213,9 @@ public class CmsService {
     public GeneralAnnouncement saveAnnouncement(Long masjidId, GeneralAnnouncement a) {
         a.setMasjid(getMasjid(masjidId));
         GeneralAnnouncement saved = generalAnnouncementRepository.save(a);
-        try {
-            pushNotificationService.sendToMasjid(masjidId,
-                    "New Announcement",
-                    saved.getTitle() == null ? "Check the latest update" : saved.getTitle(),
-                    "announcement");
-        } catch (Exception e) {
-            // Never block the CMS save on push delivery
-        }
+        notifyMembers(masjidId, "New Announcement",
+                saved.getTitle() == null ? "Check the latest update" : saved.getTitle(),
+                "announcement");
         return saved;
     }
 

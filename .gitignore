@@ -1,2 +1,39 @@
 target/
 *.jar
+
+# IDE / editor
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.factorypath
+.project
+*.factorypath
+
+# Logs
+*.log
+*.err
+app.log
+backend.err
+backend.log
+nohup.out
+
+# Build scratch
+build_cp.txt
+javac_args.txt
+
+# Throwaway / local test files (Windows connection tests)
+TestConnection*.java
+TestConnection*.class
+
+# Local / machine-specific config
+*.local.properties
+.local/
+
+# --- Secrets ---
+# application.properties holds DB + Cloudinary credentials. DO NOT commit.
+# Provide real values via env vars or an untracked local copy instead.
+application.properties
+application-local.properties
+application-secret.properties
