@@ -87,6 +87,20 @@ public class CmsController {
         return ResponseEntity.ok(Map.of("status", "ok"));
     }
 
+    @GetMapping("/ramadan/days")
+    public ResponseEntity<List<RamadanDay>> getRamadanDays(
+            @RequestHeader(name = "X-Masjid-Id", defaultValue = "1") Long masjidId) {
+        return ResponseEntity.ok(cmsService.getRamadanDays(masjidId));
+    }
+
+    @PutMapping("/ramadan/days")
+    public ResponseEntity<Map<String, String>> saveRamadanDays(
+            @RequestHeader(name = "X-Masjid-Id", defaultValue = "1") Long masjidId,
+            @RequestBody List<RamadanDay> days) {
+        cmsService.saveRamadanDays(masjidId, days);
+        return ResponseEntity.ok(Map.of("status", "ok"));
+    }
+
     @GetMapping("/janazahs")
     public ResponseEntity<List<Janazah>> getJanazahs(
             @RequestHeader(name = "X-Masjid-Id", defaultValue = "1") Long masjidId) {

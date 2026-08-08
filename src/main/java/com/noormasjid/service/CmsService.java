@@ -7,7 +7,10 @@ import com.noormasjid.repository.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CmsService {
@@ -19,6 +22,7 @@ public class CmsService {
     private final PrayerTimeRepository prayerTimeRepository;
     private final JumuahConfigRepository jumuahConfigRepository;
     private final RamadanConfigRepository ramadanConfigRepository;
+    private final RamadanDayRepository ramadanDayRepository;
     private final JanazahRepository janazahRepository;
     private final GumshudaRepository gumshudaRepository;
     private final GeneralAnnouncementRepository generalAnnouncementRepository;
@@ -36,6 +40,7 @@ public class CmsService {
                       PrayerTimeRepository prayerTimeRepository,
                       JumuahConfigRepository jumuahConfigRepository,
                       RamadanConfigRepository ramadanConfigRepository,
+                      RamadanDayRepository ramadanDayRepository,
                       JanazahRepository janazahRepository,
                       GumshudaRepository gumshudaRepository,
                       GeneralAnnouncementRepository generalAnnouncementRepository,
@@ -51,6 +56,7 @@ public class CmsService {
         this.prayerTimeRepository = prayerTimeRepository;
         this.jumuahConfigRepository = jumuahConfigRepository;
         this.ramadanConfigRepository = ramadanConfigRepository;
+        this.ramadanDayRepository = ramadanDayRepository;
         this.janazahRepository = janazahRepository;
         this.gumshudaRepository = gumshudaRepository;
         this.generalAnnouncementRepository = generalAnnouncementRepository;
@@ -123,6 +129,7 @@ public class CmsService {
 
     @Transactional
     public List<PrayerTime> savePrayerTimes(Long masjidId, List<PrayerTime> times) {
+        List<PrayerTime> old = prayerTimeRepository.findByMasjidIdOrderBySortOrderAsc(masjidId);
         prayerTimeRepository.deleteByMasjidId(masjidId);
         Masjid masjid = getMasjid(masjidId);
         for (int i = 0; i < times.size(); i++) {
@@ -133,9 +140,48 @@ public class CmsService {
         }
         List<PrayerTime> saved = prayerTimeRepository.saveAll(times);
         notifyMembers(masjidId, "Prayer Times Updated",
-                saved.size() + " prayer timing(s) updated",
+                prayerDiffMessage(old, saved),
                 "prayer-times");
         return saved;
+    }
+
+    private String prayerDiffMessage(List<PrayerTime> old, List<PrayerTime> now) {
+        List<String> changes = new ArrayList<>();
+        Map<String, PrayerTime> oldBy = new HashMap<>();
+        for (PrayerTime p : old) {
+            oldBy.put(normalizeName(p.getPrayerName()), p);
+        }
+        for (PrayerTime p : now) {
+            PrayerTime o = oldBy.get(normalizeName(p.getPrayerName()));
+            List<String> parts = new ArrayList<>();
+            if (o == null) {
+                parts.add("Azaan " + p.getAzaanTime() + ", Iqamah " + p.getPrayerTime());
+                changes.add(p.getPrayerName() + " added: " + String.join(", ", parts));
+                continue;
+            }
+            String oldAzaan = o.getAzaanTime() == null ? "" : o.getAzaanTime();
+            String oldTime = o.getPrayerTime() == null ? "" : o.getPrayerTime();
+            String newAzaan = p.getAzaanTime() == null ? "" : p.getAzaanTime();
+            String newTime = p.getPrayerTime() == null ? "" : p.getPrayerTime();
+            if (!newAzaan.equals(oldAzaan)) {
+                parts.add("Azaan " + oldAzaan + " → " + newAzaan);
+            }
+            if (!newTime.equals(oldTime)) {
+                parts.add("Iqamah " + oldTime + " → " + newTime);
+            }
+            if (!parts.isEmpty()) {
+                changes.add(p.getPrayerName() + ": " + String.join(", ", parts));
+            }
+        }
+        if (changes.isEmpty()) {
+            return "No prayer time changes";
+        }
+        return String.join(" | ", changes);
+    }
+
+    private String normalizeName(String name) {
+        if (name == null) return "";
+        return name.trim().toLowerCase();
     }
 
     public JumuahConfig getJumuah(Long masjidId) {
@@ -166,6 +212,22 @@ public class CmsService {
         existing.setIftarMessage(config.getIftarMessage());
         existing.setFitraRate(config.getFitraRate());
         return ramadanConfigRepository.save(existing);
+    }
+
+    public List<RamadanDay> getRamadanDays(Long masjidId) {
+        return ramadanDayRepository.findByMasjidIdAndIsDeletedOrderByDayNoAsc(masjidId, 0);
+    }
+
+    @Transactional
+    public List<RamadanDay> saveRamadanDays(Long masjidId, List<RamadanDay> days) {
+        ramadanDayRepository.deleteByMasjidId(masjidId);
+        Masjid masjid = getMasjid(masjidId);
+        for (RamadanDay d : days) {
+            if (d.getDayNo() == null) continue;
+            d.setId(null);
+            d.setMasjid(masjid);
+        }
+        return ramadanDayRepository.saveAll(days);
     }
 
     public List<Janazah> getJanazahs(Long masjidId) {
