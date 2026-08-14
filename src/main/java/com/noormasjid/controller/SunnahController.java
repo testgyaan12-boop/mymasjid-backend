@@ -6,7 +6,6 @@ import com.noormasjid.entity.sunnah.UserSavedSunnah;
 import com.noormasjid.security.UserDetailsImpl;
 import com.noormasjid.service.SunnahService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +29,6 @@ public class SunnahController {
     }
 
     @PostMapping("/cms/sunnahs")
-    @PreAuthorize("@masjidSecurity.hasPermission('sunnah:manage')")
     public ResponseEntity<Map<String, String>> createSunnah(
             @RequestHeader(name = "X-Masjid-Id", defaultValue = "1") Long masjidId,
             @RequestBody Sunnah sunnah) {
@@ -39,7 +37,6 @@ public class SunnahController {
     }
 
     @DeleteMapping("/cms/sunnahs/{id}")
-    @PreAuthorize("@masjidSecurity.hasPermission('sunnah:manage')")
     public ResponseEntity<Map<String, String>> deleteSunnah(@PathVariable Long id) {
         sunnahService.deleteSunnah(id);
         return ResponseEntity.ok(Map.of("status", "ok"));
@@ -54,7 +51,6 @@ public class SunnahController {
     }
 
     @PostMapping("/cms/sunnah-broadcast")
-    @PreAuthorize("@masjidSecurity.hasPermission('sunnah:manage')")
     public ResponseEntity<Map<String, String>> setActiveBroadcast(
             @RequestHeader(name = "X-Masjid-Id", defaultValue = "1") Long masjidId,
             @RequestBody Map<String, Long> body) {
