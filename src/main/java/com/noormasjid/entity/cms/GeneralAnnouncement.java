@@ -32,6 +32,9 @@ public class GeneralAnnouncement extends BaseEntity {
 @Column(name = "icon", length = 50)
     private String icon;
 
+    @Column(name = "image", columnDefinition = "TEXT")
+    private String image;
+
     @Column(name = "activated_at")
     private LocalDateTime activatedAt;
 }
