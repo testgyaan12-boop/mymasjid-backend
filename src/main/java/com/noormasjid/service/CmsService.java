@@ -249,6 +249,12 @@ public class CmsService {
         janazahRepository.save(j);
     }
 
+    public Janazah toggleJanazahActive(Long id) {
+        Janazah j = janazahRepository.findById(id).orElseThrow();
+        j.setActive(Boolean.TRUE.equals(j.getActive()) ? Boolean.FALSE : Boolean.TRUE);
+        return janazahRepository.save(j);
+    }
+
     public List<Gumshuda> getGumshudas(Long masjidId) {
         return gumshudaRepository.findByMasjidIdAndIsDeletedOrderByCreatedAtDesc(masjidId, 0);
     }
@@ -268,6 +274,12 @@ public class CmsService {
         gumshudaRepository.save(g);
     }
 
+    public Gumshuda toggleGumshudaActive(Long id) {
+        Gumshuda g = gumshudaRepository.findById(id).orElseThrow();
+        g.setActive(Boolean.TRUE.equals(g.getActive()) ? Boolean.FALSE : Boolean.TRUE);
+        return gumshudaRepository.save(g);
+    }
+
     public List<GeneralAnnouncement> getAnnouncements(Long masjidId) {
         return generalAnnouncementRepository.findByMasjidIdAndIsDeletedOrderByCreatedAtDesc(masjidId, 0);
     }
@@ -285,6 +297,12 @@ public class CmsService {
         GeneralAnnouncement a = generalAnnouncementRepository.findById(id).orElseThrow();
         a.setIsDeleted(1);
         generalAnnouncementRepository.save(a);
+    }
+
+    public GeneralAnnouncement toggleAnnouncementActive(Long id) {
+        GeneralAnnouncement a = generalAnnouncementRepository.findById(id).orElseThrow();
+        a.setActive(Boolean.TRUE.equals(a.getActive()) ? Boolean.FALSE : Boolean.TRUE);
+        return generalAnnouncementRepository.save(a);
     }
 
     public List<DonationCause> getDonationCauses(Long masjidId) {

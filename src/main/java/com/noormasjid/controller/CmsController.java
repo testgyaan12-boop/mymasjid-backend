@@ -165,6 +165,21 @@ public class CmsController {
         return ResponseEntity.ok(Map.of("status", "ok"));
     }
 
+    @PutMapping("/janazahs/{id}/toggle")
+    public ResponseEntity<Janazah> toggleJanazahActive(@PathVariable Long id) {
+        return ResponseEntity.ok(cmsService.toggleJanazahActive(id));
+    }
+
+    @PutMapping("/gumshudas/{id}/toggle")
+    public ResponseEntity<Gumshuda> toggleGumshudaActive(@PathVariable Long id) {
+        return ResponseEntity.ok(cmsService.toggleGumshudaActive(id));
+    }
+
+    @PutMapping("/announcements/{id}/toggle")
+    public ResponseEntity<GeneralAnnouncement> toggleAnnouncementActive(@PathVariable Long id) {
+        return ResponseEntity.ok(cmsService.toggleAnnouncementActive(id));
+    }
+
     @GetMapping("/donation-causes")
     public ResponseEntity<List<DonationCause>> getDonationCauses(
             @RequestHeader(name = "X-Masjid-Id", defaultValue = "1") Long masjidId) {
