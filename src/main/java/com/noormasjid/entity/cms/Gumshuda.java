@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @Entity
@@ -33,8 +35,11 @@ public class Gumshuda extends BaseEntity {
     @Column(name = "image", columnDefinition = "TEXT")
     private String image;
 
-    @Column(name = "found", nullable = false)
+@Column(name = "found", nullable = false)
     private Boolean found = false;
+
+    @Column(name = "activated_at")
+    private LocalDateTime activatedAt;
 }
 
 

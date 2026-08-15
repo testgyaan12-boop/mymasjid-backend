@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.time.LocalDateTime;
 
 @Service
 public class CmsService {
@@ -236,6 +237,8 @@ public class CmsService {
 
     public Janazah saveJanazah(Long masjidId, Janazah janazah) {
         janazah.setMasjid(getMasjid(masjidId));
+        janazah.setActive(true);
+        janazah.setActivatedAt(LocalDateTime.now());
         Janazah saved = janazahRepository.save(janazah);
         notifyMembers(masjidId, "Janazah Alert",
                 "Janazah: " + (saved.getTitle() == null ? "Prayer announced" : saved.getTitle()),
@@ -251,7 +254,11 @@ public class CmsService {
 
     public Janazah toggleJanazahActive(Long id) {
         Janazah j = janazahRepository.findById(id).orElseThrow();
-        j.setActive(Boolean.TRUE.equals(j.getActive()) ? Boolean.FALSE : Boolean.TRUE);
+        boolean newActive = !Boolean.TRUE.equals(j.getActive());
+        j.setActive(newActive);
+        if (newActive) {
+            j.setActivatedAt(LocalDateTime.now());
+        }
         return janazahRepository.save(j);
     }
 
@@ -261,6 +268,8 @@ public class CmsService {
 
     public Gumshuda saveGumshuda(Long masjidId, Gumshuda gumshuda) {
         gumshuda.setMasjid(getMasjid(masjidId));
+        gumshuda.setActive(true);
+        gumshuda.setActivatedAt(LocalDateTime.now());
         Gumshuda saved = gumshudaRepository.save(gumshuda);
         notifyMembers(masjidId, "Missing Person Alert",
                 "Missing: " + (saved.getTitle() == null ? "Please look out" : saved.getTitle()),
@@ -276,7 +285,11 @@ public class CmsService {
 
     public Gumshuda toggleGumshudaActive(Long id) {
         Gumshuda g = gumshudaRepository.findById(id).orElseThrow();
-        g.setActive(Boolean.TRUE.equals(g.getActive()) ? Boolean.FALSE : Boolean.TRUE);
+        boolean newActive = !Boolean.TRUE.equals(g.getActive());
+        g.setActive(newActive);
+        if (newActive) {
+            g.setActivatedAt(LocalDateTime.now());
+        }
         return gumshudaRepository.save(g);
     }
 
@@ -286,6 +299,8 @@ public class CmsService {
 
     public GeneralAnnouncement saveAnnouncement(Long masjidId, GeneralAnnouncement a) {
         a.setMasjid(getMasjid(masjidId));
+        a.setActive(true);
+        a.setActivatedAt(LocalDateTime.now());
         GeneralAnnouncement saved = generalAnnouncementRepository.save(a);
         notifyMembers(masjidId, "New Announcement",
                 saved.getTitle() == null ? "Check the latest update" : saved.getTitle(),
@@ -301,7 +316,11 @@ public class CmsService {
 
     public GeneralAnnouncement toggleAnnouncementActive(Long id) {
         GeneralAnnouncement a = generalAnnouncementRepository.findById(id).orElseThrow();
-        a.setActive(Boolean.TRUE.equals(a.getActive()) ? Boolean.FALSE : Boolean.TRUE);
+        boolean newActive = !Boolean.TRUE.equals(a.getActive());
+        a.setActive(newActive);
+        if (newActive) {
+            a.setActivatedAt(LocalDateTime.now());
+        }
         return generalAnnouncementRepository.save(a);
     }
 

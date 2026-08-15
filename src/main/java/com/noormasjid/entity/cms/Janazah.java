@@ -32,8 +32,11 @@ public class Janazah extends BaseEntity {
     @Column(name = "active", nullable = false)
     private Boolean active = true;
 
-    @Column(name = "event_date")
+@Column(name = "event_date")
     private LocalDateTime eventDate;
+
+    @Column(name = "activated_at")
+    private LocalDateTime activatedAt;
 }
 
 

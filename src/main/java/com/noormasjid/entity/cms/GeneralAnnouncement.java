@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @Entity
@@ -27,8 +29,11 @@ public class GeneralAnnouncement extends BaseEntity {
     @Column(name = "active", nullable = false)
     private Boolean active = true;
 
-    @Column(name = "icon", length = 50)
+@Column(name = "icon", length = 50)
     private String icon;
+
+    @Column(name = "activated_at")
+    private LocalDateTime activatedAt;
 }
 
 
