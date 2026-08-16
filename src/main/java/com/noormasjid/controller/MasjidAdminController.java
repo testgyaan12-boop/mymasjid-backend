@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/masjids/{masjidId}")
 public class MasjidAdminController {
@@ -16,6 +18,16 @@ public class MasjidAdminController {
 
     public MasjidAdminController(MasjidService masjidService) {
         this.masjidService = masjidService;
+    }
+
+    @PutMapping("/about")
+    public ResponseEntity<MessageResponse> updateAbout(
+            @PathVariable Long masjidId,
+            @RequestBody Map<String, String> body) {
+        masjidService.updateAbout(masjidId,
+                body.get("about"),
+                body.get("vision"));
+        return ResponseEntity.ok(new MessageResponse("About updated successfully"));
     }
 
     @PutMapping("/users/{userId}/role")

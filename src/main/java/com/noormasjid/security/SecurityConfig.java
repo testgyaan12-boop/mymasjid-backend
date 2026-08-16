@@ -77,6 +77,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/upload/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/masjids").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/masjids/**").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/masjids/*/about").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/notifications").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/notifications/unread-count").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/notifications/read-all").permitAll()

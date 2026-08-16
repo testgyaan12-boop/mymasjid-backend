@@ -22,5 +22,7 @@ public class MasjidResponse {
     private String email;
     private String logo;
     private String website;
+    private String about;
+    private String vision;
     private String userRole;
 }
