@@ -50,4 +50,10 @@ public class TasbihController {
         tasbihService.deleteAdhkar(id);
         return ResponseEntity.ok().build();
     }
+
+    @DeleteMapping("/tasbih-logs/{id}")
+    public ResponseEntity<?> deleteLog(@PathVariable Long id, @AuthenticationPrincipal UserDetailsImpl user) {
+        tasbihService.deleteLog(id, user.getId());
+        return ResponseEntity.ok().build();
+    }
 }

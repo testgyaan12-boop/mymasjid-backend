@@ -49,4 +49,13 @@ public class TasbihService {
     public void deleteAdhkar(Long id) {
         customAdhkarRepository.deleteById(id);
     }
+
+    public void deleteLog(Long id, Long userId) {
+        TasbihLog log = tasbihLogRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Tasbih log not found"));
+        if (!log.getUser().getId().equals(userId)) {
+            throw new RuntimeException("Unauthorized");
+        }
+        tasbihLogRepository.deleteById(id);
+    }
 }
