@@ -17,10 +17,13 @@ public class JwtProvider {
     private final long refreshExpirationMs;
 
     public JwtProvider(
-            @Value("${app.jwt.secret}") String secret,
-            @Value("${app.jwt.expiration-ms}") long expirationMs,
-            @Value("${app.jwt.refresh-expiration-ms}") long refreshExpirationMs) {
-        this.secretKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret));
+            @Value("${app.jwt.secret:404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970337336763979244226452948404D635166546A576E5A7234753778214125442A47}") String secret,
+            @Value("${app.jwt.expiration-ms:86400000}") long expirationMs,
+            @Value("${app.jwt.refresh-expiration-ms:2592000000}") long refreshExpirationMs) {
+        if (secret == null || secret.isBlank()) {
+            secret = "404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970337336763979244226452948404D635166546A576E5A7234753778214125442A47";
+        }
+        this.secretKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret.trim()));
         this.expirationMs = expirationMs;
         this.refreshExpirationMs = refreshExpirationMs;
     }
