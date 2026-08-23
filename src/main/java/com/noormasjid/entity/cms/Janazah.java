@@ -39,14 +39,24 @@ public class Janazah extends BaseEntity {
     @Column(name = "event_date")
     private LocalDateTime eventDate;
 
+    @Transient
     @JsonProperty("masjidName")
-    public String getMasjidName() {
-        return masjid != null ? masjid.getName() : null;
+    public String getMasjidNameJson() {
+        try {
+            return masjid != null ? masjid.getName() : null;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
+    @Transient
     @JsonProperty("masjidId")
-    public Long getMasjidId() {
-        return masjid != null ? masjid.getId() : null;
+    public Long getMasjidIdJson() {
+        try {
+            return masjid != null ? masjid.getId() : null;
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
 
