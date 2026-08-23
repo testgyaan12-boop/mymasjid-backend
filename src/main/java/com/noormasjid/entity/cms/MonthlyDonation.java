@@ -7,8 +7,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
 @Getter
 @Setter
 @Entity
@@ -22,9 +20,6 @@ public class MonthlyDonation extends BaseEntity {
 
     @Column(name = "month", length = 20)
     private String month;
-
-    @Column(name = "donation_date")
-    private LocalDate donationDate;
 
     @Column(name = "amount")
     private Double amount;

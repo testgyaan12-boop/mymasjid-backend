@@ -63,8 +63,6 @@ public class MasjidService {
                 .email(m.getEmail())
                 .logo(m.getLogo())
                 .website(m.getWebsite())
-                .about(m.getAbout())
-                .vision(m.getVision())
                 .build();
     }
 
@@ -103,8 +101,6 @@ public class MasjidService {
                             .email(m.getEmail())
                             .logo(m.getLogo())
                             .website(m.getWebsite())
-                            .about(m.getAbout())
-                            .vision(m.getVision())
                             .userRole(umr.getRole().getName())
                             .build();
                 })
@@ -144,14 +140,5 @@ public class MasjidService {
         return userMasjidRoleRepository
                 .findRoleNameByUserIdAndMasjidId(userId, masjidId)
                 .orElse(null);
-    }
-
-    @Transactional
-    public void updateAbout(Long masjidId, String about, String vision) {
-        Masjid masjid = masjidRepository.findById(masjidId)
-                .orElseThrow(() -> new IllegalArgumentException("Masjid not found"));
-        if (about != null) masjid.setAbout(about);
-        if (vision != null) masjid.setVision(vision);
-        masjidRepository.save(masjid);
     }
 }

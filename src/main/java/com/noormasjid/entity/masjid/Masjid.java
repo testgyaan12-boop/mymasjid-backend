@@ -40,10 +40,4 @@ public class Masjid extends BaseEntity {
 
     @Column(name = "website", length = 500)
     private String website;
-
-    @Column(name = "about", columnDefinition = "TEXT")
-    private String about;
-
-    @Column(name = "vision", columnDefinition = "TEXT")
-    private String vision;
 }

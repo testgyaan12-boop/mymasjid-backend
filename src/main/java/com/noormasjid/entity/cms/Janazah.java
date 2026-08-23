@@ -26,20 +26,14 @@ public class Janazah extends BaseEntity {
     @Column(name = "time", length = 50)
     private String time;
 
-@Column(name = "location", length = 255)
+    @Column(name = "location", length = 255)
     private String location;
-
-    @Column(name = "image", columnDefinition = "TEXT")
-    private String image;
 
     @Column(name = "active", nullable = false)
     private Boolean active = true;
 
-@Column(name = "event_date")
+    @Column(name = "event_date")
     private LocalDateTime eventDate;
-
-    @Column(name = "activated_at")
-    private LocalDateTime activatedAt;
 }
 
 

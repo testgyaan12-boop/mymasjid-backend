@@ -32,13 +32,4 @@ public class Sunnah extends BaseEntity {
 
     @Column(name = "category", length = 100)
     private String category;
-
-    @Column(name = "reference", length = 255)
-    private String reference;
-
-    @Column(name = "sunnah_text", columnDefinition = "TEXT")
-    private String text;
-
-    @Column(name = "image", columnDefinition = "TEXT")
-    private String image;
 }

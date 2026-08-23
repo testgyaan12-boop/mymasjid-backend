@@ -1,2 +1,0 @@
-ALTER TABLE masjids ADD COLUMN about TEXT;
-ALTER TABLE masjids ADD COLUMN vision TEXT;
