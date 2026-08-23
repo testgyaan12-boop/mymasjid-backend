@@ -153,6 +153,21 @@ public class CmsService {
     }
 
     public Gumshuda saveGumshuda(Long masjidId, Gumshuda gumshuda) {
+        // Normalize contact and block duplicate live number globally (active=true && found=false)
+        if (gumshuda.getContact() != null && !gumshuda.getContact().trim().isEmpty()) {
+            String norm = gumshuda.getContact().replaceAll("[\\s\\-()]", "").trim();
+            // Keep +91 etc, just strip spaces/dashes/()
+            // Check global live duplicates (masjid wise nahi, all users see alerts)
+            java.util.List<Gumshuda> live = gumshudaRepository.findByIsDeletedAndActiveAndFound(0, true, false);
+            for (Gumshuda g : live) {
+                if (g.getContact() == null) continue;
+                String existingNorm = g.getContact().replaceAll("[\\s\\-()]", "").trim();
+                if (existingNorm.equals(norm)) {
+                    throw new IllegalArgumentException("Duplicate live contact: " + gumshuda.getContact() + " already has an active alert");
+                }
+            }
+            gumshuda.setContact(norm);
+        }
         gumshuda.setMasjid(getMasjid(masjidId));
         return gumshudaRepository.save(gumshuda);
     }

@@ -1,6 +1,7 @@
 package com.noormasjid.entity.cms;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.noormasjid.entity.base.BaseEntity;
 import com.noormasjid.entity.masjid.Masjid;
 import jakarta.persistence.*;
@@ -29,6 +30,19 @@ public class GeneralAnnouncement extends BaseEntity {
 
     @Column(name = "icon", length = 50)
     private String icon;
+
+    @Column(name = "image", columnDefinition = "TEXT")
+    private String image;
+
+    @JsonProperty("masjidName")
+    public String getMasjidName() {
+        return masjid != null ? masjid.getName() : null;
+    }
+
+    @JsonProperty("masjidId")
+    public Long getMasjidId() {
+        return masjid != null ? masjid.getId() : null;
+    }
 }
 
 

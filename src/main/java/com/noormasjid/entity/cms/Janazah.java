@@ -1,6 +1,7 @@
 package com.noormasjid.entity.cms;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.noormasjid.entity.base.BaseEntity;
 import com.noormasjid.entity.masjid.Masjid;
 import jakarta.persistence.*;
@@ -32,8 +33,21 @@ public class Janazah extends BaseEntity {
     @Column(name = "active", nullable = false)
     private Boolean active = true;
 
+    @Column(name = "image", columnDefinition = "TEXT")
+    private String image;
+
     @Column(name = "event_date")
     private LocalDateTime eventDate;
+
+    @JsonProperty("masjidName")
+    public String getMasjidName() {
+        return masjid != null ? masjid.getName() : null;
+    }
+
+    @JsonProperty("masjidId")
+    public Long getMasjidId() {
+        return masjid != null ? masjid.getId() : null;
+    }
 }
 
 
