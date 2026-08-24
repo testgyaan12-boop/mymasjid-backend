@@ -12,5 +12,6 @@ import java.util.List;
 public interface JanazahRepository extends JpaRepository<Janazah, Long> {
     @Query("SELECT j FROM Janazah j JOIN FETCH j.masjid WHERE j.masjid.id = :masjidId AND j.isDeleted = :isDeleted ORDER BY j.createdAt DESC")
     List<Janazah> findByMasjidIdAndIsDeletedOrderByCreatedAtDesc(@Param("masjidId") Long masjidId, @Param("isDeleted") Integer isDeleted);
-    List<Janazah> findByMasjidIdAndIsDeletedAndActive(Long masjidId, Integer isDeleted, Boolean active);
+    @Query("SELECT j FROM Janazah j JOIN FETCH j.masjid WHERE j.masjid.id = :masjidId AND j.isDeleted = :isDeleted AND j.active = :active")
+    List<Janazah> findByMasjidIdAndIsDeletedAndActive(@Param("masjidId") Long masjidId, @Param("isDeleted") Integer isDeleted, @Param("active") Boolean active);
 }
